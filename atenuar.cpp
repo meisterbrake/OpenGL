@@ -57,6 +57,7 @@ void EjesReferencia(){
     glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, WhiteMaterial); 
     glVertex3f(0.0, 0.0, 0.0);
     glVertex3f(0.0, 0.0, 20.0);
+    glEnd();
 }
 
 void cilindro(){
@@ -81,7 +82,7 @@ void cilindro(){
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glTranslatef(-7.0, 0.0, -27.0);
-    glRotatef(-90., 1.0, 0.0, 0.0);
+    glRotatef(-90, 1.0, 0.0, 0.0);
     gluCylinder(quadobj, 
                 2, //Gldouble baseRadius,
                 2, //Gldouble topRadius,
