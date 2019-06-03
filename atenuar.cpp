@@ -15,8 +15,8 @@ GLfloat light_Ambient [4] = {0.4, 0.4, 0.4, 1.0};
 GLfloat light_Diffuse [4] = {0.7, 0.7, 0.7, 1.0};
 GLfloat light_Position [4] = {20.0, 15.0, 10.0, 1.0};
 GLfloat light_const [4] = {1.0, 1.0, 1.0, 1.0};
-GLfloat light_lin [4] = {0.0, 0.0, 0.0, 1.0};
-GLfloat light_qua [4] = {0.0, 0.0, 0.0, 1.0};
+GLfloat light_lin [4] = {0.00, 0.0, 0.0, 1.0};
+GLfloat light_qua [4] = {0.001, 0.0, 0.0, 1.0};
 
 //definicion de las caracteristicas opticas del material: coeficientes de reflexion
 GLfloat material [4] = {1.0, 0.2, 0.2, 1.0};
@@ -39,9 +39,9 @@ void luces(void){
     glLightfv(GL_LIGHT0, GL_DIFFUSE, light_Diffuse);
     glLightfv(GL_LIGHT0, GL_POSITION, light_Position);
 
-    // glLightfv(GL_LIGHT0, GL_LINEAR_ATTENUATION, light_lin);
-    // glLightfv(GL_LIGHT0, GL_CONSTANT_ATTENUATION, light_const);
-    // glLightfv(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, light_qua);
+    glLightfv(GL_LIGHT0, GL_LINEAR_ATTENUATION, light_lin);
+    glLightfv(GL_LIGHT0, GL_CONSTANT_ATTENUATION, light_const);
+    glLightfv(GL_LIGHT0, GL_QUADRATIC_ATTENUATION, light_qua);
 }
 
 void EjesReferencia(){
@@ -65,7 +65,7 @@ void cilindro(){
     quadobj = gluNewQuadric();
     gluQuadricDrawStyle(quadobj, GLU_FILL);
     
-    gluQuadricNormals( quadobj, GLU_SMOOTH);
+    gluQuadricNormals(quadobj, GLU_SMOOTH);
 
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
