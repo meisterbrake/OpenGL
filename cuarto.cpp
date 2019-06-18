@@ -24,11 +24,17 @@ void display(void){
     glutSwapBuffers();
 }
 
-void spinDisplay(void){
-    spin = spin + 2.0;
-    if(spin > 360.0)
-        spin = spin - 360.0;
-    glutPostRedisplay();
+void spinDisplayLeft(void) {
+	spin = spin + 0.8;
+	if (spin > 360.0)
+		spin = spin - 360;
+	glutPostRedisplay();
+}
+void spinDisplayRight(void) {
+	spin = spin - 0.8;
+	if (spin < -360.0)
+		spin = spin + 360;
+	glutPostRedisplay();
 }
 
 void reshape(int w, int h){
@@ -43,14 +49,15 @@ void reshape(int w, int h){
 void mouse(int button, int state, int x, int y){
     switch (button) {
         case GLUT_LEFT_BUTTON:
-            if (state == GLUT_DOWN)
-                glutIdleFunc(spinDisplay);
-            break;
-            
-        case GLUT_MIDDLE_BUTTON:
-            if(state == GLUT_DOWN)
-                glutIdleFunc(0);
-            break;
+		if (state == GLUT_DOWN)
+			glColor3f(1.0, 0.0, 0.0);
+			glutIdleFunc(spinDisplayLeft);
+		break;
+	case GLUT_RIGHT_BUTTON:
+		if (state == GLUT_DOWN)
+			glColor3f(0.0, 1.0, 0.0);
+			glutIdleFunc(spinDisplayRight);
+		break;
         default:
             break;
     }
